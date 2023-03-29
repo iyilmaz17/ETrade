@@ -19,7 +19,7 @@ namespace Business.Concrete
         public IDataResult<List<Product>> GetAll()
         {
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(), Messages.ProductListed);
-            
+
         }
 
         public IDataResult<List<Product>> GetAllByCategoryId(int categoryId)
@@ -27,9 +27,9 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(p => p.CategoryId == categoryId));
         }
 
-        public IDataResult<List<Product>> GetByUnitPrice(decimal min, decimal max)
+        public IDataResult<List<Product>> GetByUnitPrice(int minPrice, int maxPrice)
         {
-            return new SuccessDataResult<List<Product>>( _productDal.GetAll(x => x.UnitPrice >= min && x.UnitPrice <= max));
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll(x => x.UnitPrice >= minPrice && x.UnitPrice <= maxPrice));
         }
 
         public IDataResult<Product> GetById(int productId)
@@ -50,11 +50,11 @@ namespace Business.Concrete
 
         public IDataResult<List<ProductDetailDto>> GetProductDetail()
         {
-            if (DateTime.Now.Hour == 14)
-            {
-                return new ErrorDataResult<List<ProductDetailDto>>(Messages.MaintenanceTime);
-            }
-           
+            //if (DateTime.Now.Hour == 14)
+            //{
+            //    return new ErrorDataResult<List<ProductDetailDto>>(Messages.MaintenanceTime);
+            //}
+
             return new SuccessDataResult<List<ProductDetailDto>>(_productDal.getProductsDetailDtos());
         }
     }

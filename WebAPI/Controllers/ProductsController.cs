@@ -21,7 +21,7 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            
+
             var result = _productService.GetAll();
             if (result.IsSuccess)
             {
@@ -47,6 +47,39 @@ namespace WebAPI.Controllers
         public IActionResult Add(Product product)
         {
             var result = _productService.Add(product);
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getallbycategoryid")]
+        public IActionResult GetAllByCategoryId(int categoryId)
+        {
+            var result = _productService.GetAllByCategoryId(categoryId);
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getbyunitprice")]
+        public IActionResult GetByUnitPrice(int minPrice, int maxPrice)
+        {
+            var result = _productService.GetByUnitPrice(minPrice, maxPrice);
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getcategoryname")]
+        public IActionResult GetCategoryName()
+        {
+            var result = _productService.GetProductDetail();
             if (result.IsSuccess)
             {
                 return Ok(result);

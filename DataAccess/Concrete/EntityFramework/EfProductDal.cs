@@ -26,7 +26,7 @@ namespace DataAccess.Concrete.EntityFramework
                              {
                                  ProductName = p.ProductName,
                                  ProductId = p.Id,
-                                 CategoryName = c.CategoryName2
+                                 CategoryName = c.CategoryName3 
                              };
                 return result.ToList();
             }
