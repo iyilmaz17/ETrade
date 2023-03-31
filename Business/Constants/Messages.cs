@@ -16,5 +16,11 @@ namespace Business.Constants
 
 
         public static string ProductCodeAlreadyExists = "Bu ürün kodunda bir ürün zaten mevcut";
+
+
+        public static string ProductImagesAdded = "Ürün resmi başarıyla eklendi";
+        public static string ProductImagesNotAdded = "Bir ürüne en fazla 5 adet resim eklenebilir.";
+        public static string ProductImagesUpdated = "Ürün resmi başarıyla güncellendi";
+        public static string ProductImagesDeleted = "Ürün resmi başarıyla silindi";
     }
 }
