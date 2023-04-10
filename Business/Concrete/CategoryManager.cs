@@ -10,6 +10,7 @@ using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 
 namespace Business.Concrete
 {
@@ -37,5 +38,10 @@ namespace Business.Concrete
             _categoryDal.Add(category);
             return new SuccessResult("Kategori eklendi");
         }
+        public IDataResult<List<MainCategoryDto>> GetMainCategory(string categoryName)
+        {
+            return new SuccessDataResult<List<MainCategoryDto>>(_categoryDal.GetMainCategory(categoryName).DistinctBy(x => x.CategoryaName).ToList());
+        }
+
     }
 }

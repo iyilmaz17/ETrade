@@ -5,11 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.DataAccess;
+using Entities.DTOs;
+using DataAccess.Concrete.EntityFramework;
 
 namespace DataAccess.Abstract
 {
     public interface ICategoryDal : IEntityRepository<Category>
     {
-
+        public List<MainCategoryDto> GetMainCategory(string categoryName);
     }
 }

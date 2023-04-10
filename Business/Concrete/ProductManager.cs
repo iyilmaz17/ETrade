@@ -23,7 +23,7 @@ namespace Business.Concrete
             _productDal = productDal;
             _categoryService = categoryService;
         }
-        [CacheAspect]
+        //[CacheAspect]
         public IDataResult<List<Product>> GetAll()
         {
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(), Messages.ProductListed);

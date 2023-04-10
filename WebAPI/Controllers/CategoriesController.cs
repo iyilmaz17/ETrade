@@ -21,7 +21,7 @@ namespace WebAPI.Controllers
             var result = _categoryService.GetAll();
             if (result.IsSuccess)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
 
             return BadRequest(result.Message);
@@ -48,5 +48,17 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+        [HttpGet("getmaincategory")]
+        public IActionResult GetMainCategory(string categoryName)
+        {
+            var result = _categoryService.GetMainCategory(categoryName);
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result.Message);
+        }
+
     }
 }

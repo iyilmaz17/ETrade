@@ -36,6 +36,9 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<AuthManager>().As<IAuthService>();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
 
+            builder.RegisterType<CartManager>().As<ICartService>().SingleInstance();
+            builder.RegisterType<EfCartDal>().As<ICartDal>().SingleInstance();
+
             builder.RegisterType<FileHelperManager>().As<IFileHelper>().SingleInstance();
 
             builder.RegisterType<FileLogger>().As<ILogger>().SingleInstance();
