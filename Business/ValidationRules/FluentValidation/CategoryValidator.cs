@@ -12,22 +12,22 @@ namespace Business.ValidationRules.FluentValidation
     {
         public CategoryValidator()
         {
-            // Category 1
-            RuleFor(c => c.CategoryName1).NotEmpty();
-            RuleFor(c => c.CategoryName1).MinimumLength(5);
-            RuleFor(c => c.CategoryName1).MaximumLength(25);
-            // Category 2
-            RuleFor(c => c.CategoryName2).NotEmpty();
-            RuleFor(c => c.CategoryName2).MinimumLength(5);
-            RuleFor(c => c.CategoryName2).MaximumLength(25);
-            // Category 3
-            RuleFor(c => c.CategoryName3).NotEmpty();
-            RuleFor(c => c.CategoryName3).MinimumLength(5);
-            RuleFor(c => c.CategoryName3).MaximumLength(25);
-            // Category 4
-            //RuleFor(c => c.CategoryName4).NotEmpty();
-            RuleFor(c => c.CategoryName4).MinimumLength(5);
-            RuleFor(c => c.CategoryName4).MaximumLength(25);
+            //// Category 1
+            //RuleFor(c => c.CategoryName1).NotEmpty();
+            //RuleFor(c => c.CategoryName1).MinimumLength(5);
+            //RuleFor(c => c.CategoryName1).MaximumLength(25);
+            //// Category 2
+            //RuleFor(c => c.CategoryName2).NotEmpty();
+            //RuleFor(c => c.CategoryName2).MinimumLength(5);
+            //RuleFor(c => c.CategoryName2).MaximumLength(25);
+            //// Category 3
+            //RuleFor(c => c.CategoryName3).NotEmpty();
+            //RuleFor(c => c.CategoryName3).MinimumLength(5);
+            //RuleFor(c => c.CategoryName3).MaximumLength(25);
+            //// Category 4
+            ////RuleFor(c => c.CategoryName4).NotEmpty();
+            //RuleFor(c => c.CategoryName4).MinimumLength(5);
+            //RuleFor(c => c.CategoryName4).MaximumLength(25);
 
         }
     }

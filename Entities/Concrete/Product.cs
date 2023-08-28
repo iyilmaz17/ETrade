@@ -14,7 +14,7 @@ namespace Entities.Concrete
         public string ProductName { get; set; }
         public string Barcode { get; set; }
         public decimal UnitPrice { get; set; }
-        public decimal TaxRate { get; set; }
+        public int TaxRate { get; set; }
         public DateTime AddedDate { get; set; }
         public byte Stock { get; set; }
         public string Brand { get; set; }

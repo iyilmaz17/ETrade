@@ -48,17 +48,27 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-        [HttpGet("getmaincategory")]
-        public IActionResult GetMainCategory(string categoryName)
+        [HttpGet("getbymaincategory")]
+        public IActionResult GetByMainCategory()
         {
-            var result = _categoryService.GetMainCategory(categoryName);
+            var result = _categoryService.GetByMainCategory();
             if (result.IsSuccess)
             {
                 return Ok(result);
             }
-
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
+        //[HttpGet("getmaincategory")]
+        //public IActionResult GetMainCategory(string categoryName)
+        //{
+        //    var result = _categoryService.GetMainCategory(categoryName);
+        //    if (result.IsSuccess)
+        //    {
+        //        return Ok(result);
+        //    }
+
+        //    return BadRequest(result.Message);
+        //}
 
     }
 }

@@ -13,8 +13,9 @@ namespace Business.Abstract
     {
         IDataResult<List<Category>> GetAll();
         IDataResult<Category> GetById(int categoryId);
+        IDataResult<List<Category>> GetByMainCategory();
         IResult Add(Category category);
-        IDataResult<List<MainCategoryDto>> GetMainCategory(string categoryName);
+       // IDataResult<List<MainCategoryDto>> GetMainCategory(string categoryName);
     }
 
 }

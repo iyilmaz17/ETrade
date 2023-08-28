@@ -38,9 +38,14 @@ namespace Business.Concrete
             _categoryDal.Add(category);
             return new SuccessResult("Kategori eklendi");
         }
-        public IDataResult<List<MainCategoryDto>> GetMainCategory(string categoryName)
+        //public IDataResult<List<MainCategoryDto>> GetMainCategory(string categoryName)
+        //{
+        //    return new SuccessDataResult<List<MainCategoryDto>>(_categoryDal.GetMainCategory(categoryName).DistinctBy(x => x.CategoryaName).ToList());
+        //}
+        public IDataResult<List<Category>> GetByMainCategory()
         {
-            return new SuccessDataResult<List<MainCategoryDto>>(_categoryDal.GetMainCategory(categoryName).DistinctBy(x => x.CategoryaName).ToList());
+            return new SuccessDataResult<List<Category>>(_categoryDal.GetAll(c => c.SubCategory1 == 0));
+
         }
 
     }

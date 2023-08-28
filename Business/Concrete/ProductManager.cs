@@ -75,15 +75,15 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
-        public IDataResult<List<ProductDetailDto>> GetProductDetail()
-        {
-            //if (DateTime.Now.Hour == 14)
-            //{
-            //    return new ErrorDataResult<List<ProductDetailDto>>(Messages.MaintenanceTime);
-            //}
+        //public IDataResult<List<ProductDetailDto>> GetProductDetail()
+        //{
+        //    //if (DateTime.Now.Hour == 14)
+        //    //{
+        //    //    return new ErrorDataResult<List<ProductDetailDto>>(Messages.MaintenanceTime);
+        //    //}
 
-            return new SuccessDataResult<List<ProductDetailDto>>(_productDal.getProductsDetailDtos());
-        }
+        //    return new SuccessDataResult<List<ProductDetailDto>>(_productDal.getProductsDetailDtos());
+        //}
 
         private IResult CheckIfProductCountOfCategoryCorrect(int categoryId)
         {

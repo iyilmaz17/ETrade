@@ -15,21 +15,21 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfProductDal : EfEntityRepositoryBase<Product, ETradeContext>, IProductDal
     {
-        public List<ProductDetailDto> getProductsDetailDtos()
-        {
-            using (ETradeContext context = new ETradeContext())
-            {
-                var result = from p in context.Products
-                             join c in context.Categories
-                                 on p.CategoryId equals c.Id
-                             select new ProductDetailDto
-                             {
-                                 ProductName = p.ProductName,
-                                 ProductId = p.Id,
-                                 CategoryName = c.CategoryName3 
-                             };
-                return result.ToList();
-            }
-        }
+        //public List<ProductDetailDto> getProductsDetailDtos()
+        //{
+        //    using (ETradeContext context = new ETradeContext())
+        //    {
+        //        var result = from p in context.Products
+        //                     join c in context.Categories
+        //                         on p.CategoryId equals c.Id
+        //                     select new ProductDetailDto
+        //                     {
+        //                         ProductName = p.ProductName,
+        //                         ProductId = p.Id,
+        //                         CategoryName = c.CategoryName3 
+        //                     };
+        //        return result.ToList();
+        //    }
+        //}
     }
 }

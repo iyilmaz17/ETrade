@@ -75,15 +75,15 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getcategoryname")]
-        public IActionResult GetCategoryName()
-        {
-            var result = _productService.GetProductDetail();
-            if (result.IsSuccess)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
+        //[HttpGet("getcategoryname")]
+        //public IActionResult GetCategoryName()
+        //{
+        //    var result = _productService.GetProductDetail();
+        //    if (result.IsSuccess)
+        //    {
+        //        return Ok(result);
+        //    }
+        //    return BadRequest(result);
+        //}
     }
 }

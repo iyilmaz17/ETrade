@@ -15,16 +15,16 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfCategoryDal : EfEntityRepositoryBase<Category, ETradeContext>, ICategoryDal
     {
-        public List<MainCategoryDto> GetMainCategory(string categoryName)
-        {
-            using (var context = new ETradeContext())
-            {
-                var result = from category in context.Categories
-                             where (category.CategoryName1 == categoryName)
-                             select new MainCategoryDto { CategoryaName = category.CategoryName2 };
-                return result.ToList();
+        //public List<MainCategoryDto> GetMainCategory(string categoryName)
+        //{
+        //    using (var context = new ETradeContext())
+        //    {
+        //        var result = from category in context.Categories
+        //                     where (category.CategoryName1 == categoryName)
+        //                     select new MainCategoryDto { CategoryaName = category.CategoryName2 };
+        //        return result.ToList();
 
-            }
-        }
+        //    }
+        //}
     }
 }
