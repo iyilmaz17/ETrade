@@ -23,14 +23,13 @@ namespace Business.Concrete
             _productImage = productImage;
             _fileHelper = fileHelper;
         }
-        public IResult Add(IFormFile file, ProductImage productImage)
+        public IResult Add(IFormFile file, ProductImage productImage,int productId)
         {
             IResult result = BusinessRules.Run(CheckIfProductImageLimit(productImage.ProductId));
             if (result != null)
             {
                 return result;
             }
-
             productImage.ImagePath = _fileHelper.Upload(file, PathConstants.ImagesPath);
             productImage.UploadDate = DateTime.Now; ;
             _productImage.Add(productImage);
@@ -66,6 +65,12 @@ namespace Business.Concrete
                 return new ErrorDataResult<List<ProductImage>>(GetDefaultProductImage(productId).Data);
             }
             return new SuccessDataResult<List<ProductImage>>(_productImage.GetAll(p => p.ProductId == productId));
+        }
+        public IDataResult<ProductImage> GetByDistinctProductId(int productId)
+        {
+            var result = (_productImage.GetByDistinctProductId(productId));
+            
+            return new SuccessDataResult<ProductImage>(result);
         }
 
         public IDataResult<ProductImage> GetById(int imageId)

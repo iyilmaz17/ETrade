@@ -17,9 +17,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add([FromForm] IFormFile file, [FromForm] ProductImage productImage)
+        public IActionResult Add([FromForm] IFormFile file, [FromForm] ProductImage productImage, int productId )
         {
-            var result = _productImageService.Add(file, productImage);
+            var result = _productImageService.Add(file, productImage,productId);
             if (result.IsSuccess)
             {
                 return Ok(result);
@@ -67,6 +67,17 @@ namespace WebAPI.Controllers
         public IActionResult GetByProductId(int productId)
         {
             var result = _productImageService.GetByProductId(productId);
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getbydistinctproductid")]
+        public IActionResult GetByDistinctProductId(int productId)
+        {
+            var result = _productImageService.GetByDistinctProductId(productId);
             if (result.IsSuccess)
             {
                 return Ok(result);

@@ -8,7 +8,7 @@ using FluentValidation;
 
 namespace Business.ValidationRules.FluentValidation
 {
-    public class CategoryValidator :AbstractValidator<Category>
+    public class CategoryValidator :AbstractValidator<MainCategory>
     {
         public CategoryValidator()
         {

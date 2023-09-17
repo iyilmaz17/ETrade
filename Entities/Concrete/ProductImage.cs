@@ -13,5 +13,6 @@ namespace Entities.Concrete
         public int ProductId { get; set; }
         public string ImagePath { get; set; }
         public DateTime UploadDate { get; set; }
+        public bool HomeImage { get; set; }
     }
 }

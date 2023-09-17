@@ -39,36 +39,51 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Category category)
+        public IActionResult Add(MainCategory category)
         {
-            var result =_categoryService.Add(category);
+            var result = _categoryService.Add(category);
             if (result.IsSuccess)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
-        [HttpGet("getbymaincategory")]
-        public IActionResult GetByMainCategory()
+
+
+        // Category 2
+        [HttpGet("setallsubcategoryone")]
+        public IActionResult GetList2()
         {
-            var result = _categoryService.GetByMainCategory();
+            var result = _categoryService.GetAllSubcategoryOne();
             if (result.IsSuccess)
             {
                 return Ok(result);
             }
-            return BadRequest(result);
+
+            return BadRequest(result.Message);
         }
-        //[HttpGet("getmaincategory")]
-        //public IActionResult GetMainCategory(string categoryName)
-        //{
-        //    var result = _categoryService.GetMainCategory(categoryName);
-        //    if (result.IsSuccess)
-        //    {
-        //        return Ok(result);
-        //    }
+        [HttpGet("geybyparentidsubcategoryone")]
+        public IActionResult GetByParentCategoryId(int parentId)
+        {
+            var result = _categoryService.GetByParentCategoryIdSubcategoryOne(parentId);
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
 
-        //    return BadRequest(result.Message);
-        //}
+            return BadRequest(result.Message);
+        }
 
+        [HttpGet("geybyparentidsubcategorytwo")]
+        public IActionResult GetByParentCategoryId3(int parentId)
+        {
+            var result = _categoryService.GetByParentCategoryIdSubcategoryTwo(parentId);
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result.Message);
+        }
     }
 }

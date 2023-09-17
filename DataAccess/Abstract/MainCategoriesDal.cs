@@ -10,8 +10,7 @@ using DataAccess.Concrete.EntityFramework;
 
 namespace DataAccess.Abstract
 {
-    public interface ICategoryDal : IEntityRepository<Category>
+    public interface MainCategoriesDal : IEntityRepository<MainCategory>
     {
-        //public List<MainCategoryDto> GetMainCategory(string categoryName);
     }
 }

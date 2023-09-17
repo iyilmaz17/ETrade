@@ -30,7 +30,18 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
+        [HttpGet("getallcustomerproduct")]
+        public IActionResult Get()
+        {
+            var result = _productService.GetAllCustomerProduct();
+            if (result.IsSuccess)
+            {
+                return Ok(result);
 
+            }
+
+            return BadRequest(result);
+        }
         [HttpGet("getbyid")]
         public IActionResult GetById(int productId)
         {
@@ -50,7 +61,7 @@ namespace WebAPI.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result);
+            return BadRequest(result.Message);
         }
 
         [HttpGet("getallbycategoryid")]
@@ -74,16 +85,16 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+        [HttpGet("getallcategorypageproducts")]
+        public IActionResult GetAllCategoryPageProducts(int categoryId)
+        {
+            var result = _productService.GetByCatgeoryIdCustomerProduct(categoryId);
+            if (result.IsSuccess)
+            {
+                return Ok(result);
 
-        //[HttpGet("getcategoryname")]
-        //public IActionResult GetCategoryName()
-        //{
-        //    var result = _productService.GetProductDetail();
-        //    if (result.IsSuccess)
-        //    {
-        //        return Ok(result);
-        //    }
-        //    return BadRequest(result);
-        //}
+            }
+            return BadRequest(result);
+        }
     }
 }

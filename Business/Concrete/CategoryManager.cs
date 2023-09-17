@@ -16,37 +16,53 @@ namespace Business.Concrete
 {
     public class CategoryManager : ICategoryService
     {
-        private readonly ICategoryDal _categoryDal;
+        private readonly MainCategoriesDal _mainCategoriesDal;
+        private readonly SubcategoriesOneDal _subcategoriesOneDal;
+        private readonly SubcategoriesTwoDal _subcategoriesTwoDal;
 
-        public CategoryManager(ICategoryDal categoryDal)
+        public CategoryManager(MainCategoriesDal mainCategoriesDal, SubcategoriesOneDal subcategoriesOneDal, SubcategoriesTwoDal subcategoriesTwoDal)
         {
-            _categoryDal = categoryDal;
+            _mainCategoriesDal = mainCategoriesDal;
+            _subcategoriesOneDal = subcategoriesOneDal;
+            _subcategoriesTwoDal = subcategoriesTwoDal;
         }
 
-        public IDataResult<List<Category>> GetAll()
+        public IDataResult<List<MainCategory>> GetAll()
         {
-            return new SuccessDataResult<List<Category>>(_categoryDal.GetAll());
+            return new SuccessDataResult<List<MainCategory>>(_mainCategoriesDal.GetAll());
         }
 
-        public IDataResult<Category> GetById(int categoryId)
+        public IDataResult<MainCategory> GetById(int categoryId)
         {
-            return new SuccessDataResult<Category>(_categoryDal.Get(c => c.Id == categoryId));
+            return new SuccessDataResult<MainCategory>(_mainCategoriesDal.Get(c => c.Id == categoryId));
         }
         [ValidationAspect(typeof(CategoryValidator))]
-        public IResult Add(Category category)
+        public IResult Add(MainCategory category)
         {
-            _categoryDal.Add(category);
+            _mainCategoriesDal.Add(category);
             return new SuccessResult("Kategori eklendi");
         }
-        //public IDataResult<List<MainCategoryDto>> GetMainCategory(string categoryName)
-        //{
-        //    return new SuccessDataResult<List<MainCategoryDto>>(_categoryDal.GetMainCategory(categoryName).DistinctBy(x => x.CategoryaName).ToList());
-        //}
-        public IDataResult<List<Category>> GetByMainCategory()
-        {
-            return new SuccessDataResult<List<Category>>(_categoryDal.GetAll(c => c.SubCategory1 == 0));
 
+        // Category2
+        public IDataResult<List<SubcategoryOne>> GetAllSubcategoryOne()
+        {
+            return new SuccessDataResult<List<SubcategoryOne>>(_subcategoriesOneDal.GetAll());
         }
 
+
+        public IDataResult<List<SubcategoryOne>> GetByParentCategoryIdSubcategoryOne(int parentCategoryId)
+        {
+            return new SuccessDataResult<List<SubcategoryOne>>(_subcategoriesOneDal.GetAll(c=>c.ParentCategoryId == parentCategoryId));
+        }
+
+        public IDataResult<List<SubcategoryTwo>> GetAllSubcategoryTwo()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<SubcategoryTwo>> GetByParentCategoryIdSubcategoryTwo(int parentCategoryId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

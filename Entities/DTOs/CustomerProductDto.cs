@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Core.Entities;
 
-namespace Entities.Concrete
+namespace Entities.DTOs
 {
-    public class Product : IEntity
+    public class CustomerProductDto
     {
         public int Id { get; set; }
         public string ProductCode { get; set; }
@@ -23,5 +22,6 @@ namespace Entities.Concrete
         public byte CategoryId2 { get; set; }
         public byte? CategoryId3 { get; set; }
         public DateTime AddedDate { get; set; }
+        public string ImagePath { get; set; }
     }
 }

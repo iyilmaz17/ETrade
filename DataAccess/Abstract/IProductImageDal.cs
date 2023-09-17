@@ -10,5 +10,6 @@ namespace DataAccess.Abstract
 {
     public interface IProductImageDal :IEntityRepository<ProductImage>
     {
+        ProductImage GetByDistinctProductId(int productId);
     }
 }

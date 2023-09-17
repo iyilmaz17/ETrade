@@ -10,9 +10,8 @@ namespace Core.Utilities.Helpers.FileHelper
     {
         public static string CreateGuid()
         {
-            return Guid.NewGuid().ToString();
-            //return "ProductImage" + DateTime.Now.Date.ToString("dd-MM-yyyy") + "at" +
-                   //(DateTime.Now.TimeOfDay.ToString());
+            //return Guid.NewGuid().ToString();
+            return "ProductImage" + DateTime.Now.Date.ToString("dd-MM-yyyy");
         }
     }
 }

@@ -12,5 +12,16 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfProductImageDal : EfEntityRepositoryBase<ProductImage, ETradeContext>, IProductImageDal
     {
+        public ProductImage GetByDistinctProductId(int productId)
+        {
+            using (ETradeContext context = new ETradeContext())
+            {
+                var result = (from i in context.ProductImages where i.ProductId == productId
+                              select i).FirstOrDefault();
+                return result;
+            }
+        }
+
+
     }
 }

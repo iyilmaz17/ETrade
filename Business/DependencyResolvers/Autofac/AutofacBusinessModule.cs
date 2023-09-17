@@ -25,7 +25,9 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<EfProductDal>().As<IProductDal>().SingleInstance();
 
             builder.RegisterType<CategoryManager>().As<ICategoryService>().SingleInstance();
-            builder.RegisterType<EfCategoryDal>().As<ICategoryDal>().SingleInstance();
+            builder.RegisterType<EfMainCategoriesDal>().As<MainCategoriesDal>().SingleInstance();
+            builder.RegisterType<EfSubcategoriesOneDal>().As<SubcategoriesOneDal>().SingleInstance();
+            builder.RegisterType<EfSubcategoriesTwoDal>().As<SubcategoriesTwoDal>().SingleInstance();
 
             builder.RegisterType<ProductImageManager>().As<IProductImageService>().SingleInstance();
             builder.RegisterType<EfProductImageDal>().As<IProductImageDal>().SingleInstance();
@@ -38,6 +40,9 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<CartManager>().As<ICartService>().SingleInstance();
             builder.RegisterType<EfCartDal>().As<ICartDal>().SingleInstance();
+
+            builder.RegisterType<BrandManager>().As<IBrandService>().SingleInstance();
+            builder.RegisterType<EfBrandDal>().As<IBrandDal>().SingleInstance();
 
             builder.RegisterType<FileHelperManager>().As<IFileHelper>().SingleInstance();
 

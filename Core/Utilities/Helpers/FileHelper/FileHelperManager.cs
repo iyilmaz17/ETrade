@@ -19,11 +19,11 @@ namespace Core.Utilities.Helpers.FileHelper
                 string extension = Path.GetExtension(file.FileName);
                 string guid = GuidHelper.CreateGuid();
                 string filePath = guid + extension;
-                using (FileStream fileStream = File.Create(root + filePath))
+                using (FileStream fileStream = File.Create(@"D:\MyTemplate\src\assets\image\" + filePath))
                 {
                     file.CopyTo(fileStream);
                     fileStream.Flush();
-                    return root + filePath;
+                    return "./assets/image/" + filePath;
                 }
             }
             return null;

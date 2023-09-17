@@ -32,7 +32,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Product>> GetAllByCategoryId(int categoryId)
         {
-            return new SuccessDataResult<List<Product>>(_productDal.GetAll(p => p.CategoryId == categoryId));
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll(p => p.CategoryId1 == categoryId));
         }
 
         public IDataResult<List<Product>> GetByUnitPrice(int minPrice, int maxPrice)
@@ -45,13 +45,13 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<Product>(_productDal.Get(p => p.Id == productId));
         }
-        //[SecuredOperation("product.add,admin")]
+        //[SecuredOperation("product.edit,product.add,admin")]
         [ValidationAspect(typeof(ProductValidator))]
         //[CacheRemoveAspect("IProductService.Get")]
         public IResult Add(Product product)
         {
             IResult result = BusinessRules.Run(
-                 CheckIfProductCountOfCategoryCorrect(product.CategoryId),
+                 CheckIfProductCountOfCategoryCorrect(product.CategoryId1),
                  CheckIfProductCodeExists(product.ProductCode));
             if (result != null)
             {
@@ -74,20 +74,18 @@ namespace Business.Concrete
         {
             throw new NotImplementedException();
         }
-
-        //public IDataResult<List<ProductDetailDto>> GetProductDetail()
-        //{
-        //    //if (DateTime.Now.Hour == 14)
-        //    //{
-        //    //    return new ErrorDataResult<List<ProductDetailDto>>(Messages.MaintenanceTime);
-        //    //}
-
-        //    return new SuccessDataResult<List<ProductDetailDto>>(_productDal.getProductsDetailDtos());
-        //}
+        public IDataResult<List<CustomerProductDto>> GetAllCustomerProduct()
+        {
+            return new SuccessDataResult<List<CustomerProductDto>>(_productDal.GetAllCustomerProduct(), Messages.ProductListed);
+        }
+        public IDataResult<List<CustomerProductDto>> GetByCatgeoryIdCustomerProduct(int categoryId)
+        {
+            return new SuccessDataResult<List<CustomerProductDto>>(_productDal.GetByCatgeoryIdCustomerProduct(categoryId));
+        }
 
         private IResult CheckIfProductCountOfCategoryCorrect(int categoryId)
         {
-            var result = _productDal.GetAll(x => x.CategoryId == categoryId).Count;
+            var result = _productDal.GetAll(x => x.CategoryId1 == categoryId).Count;
             if (result >= 10)
             {
                 return new ErrorResult("Kategori sınırı aşıldı");
@@ -122,5 +120,7 @@ namespace Business.Concrete
         {
             throw new NotImplementedException();
         }
+
+        
     }
 }

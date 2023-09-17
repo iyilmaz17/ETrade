@@ -13,7 +13,7 @@ namespace Business.ValidationRules.FluentValidation
         public ProductValidator()
         {
             RuleFor(p => p.ProductName).NotEmpty();
-            RuleFor(p => p.ProductName).MinimumLength(5).WithMessage("Ürün Adı en az 5 karakter");
+           RuleFor(p => p.ProductName).MinimumLength(5).WithMessage("Ürün Adı en az 5 karakter");
 
             // UnitPrice
             RuleFor(p => p.UnitPrice).GreaterThan(0).WithMessage("Ürün fiyatı 0 olamaz");

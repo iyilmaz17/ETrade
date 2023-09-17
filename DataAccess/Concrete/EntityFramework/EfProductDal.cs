@@ -15,6 +15,65 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfProductDal : EfEntityRepositoryBase<Product, ETradeContext>, IProductDal
     {
+        public List<CustomerProductDto> GetAllCustomerProduct()
+        {
+            using (ETradeContext context = new ETradeContext())
+                    {
+                var result = from p in context.Products
+                             join i in context.ProductImages
+                             on p.Id equals i.ProductId
+                             where i.HomeImage == true 
+                             select new CustomerProductDto
+                             {
+                                 Id = p.Id,
+                                 Barcode = p.Barcode,
+                                 AddedDate = p.AddedDate,
+                                 Brand = p.Brand,
+                                 CategoryId1 = p.CategoryId1,
+                                 CategoryId2 = p.CategoryId2,
+                                 CategoryId3 = p.CategoryId3,
+                                 Description = p.Description,
+                                 ProductCode = p.ProductCode,
+                                 ProductName = p.ProductName,
+                                 Status = p.Status,
+                                 Stock = p.Stock,
+                                 TaxRate = p.TaxRate,
+                                 UnitPrice = p.UnitPrice,
+                                 ImagePath = i.ImagePath
+                             };
+                return result.ToList();
+                           }
+        }
+        public List<CustomerProductDto> GetByCatgeoryIdCustomerProduct(int categoryId)
+        {
+            using (ETradeContext context = new ETradeContext())
+            {
+                var result = from p in context.Products
+                             join i in context.ProductImages
+                             on p.Id equals i.ProductId
+                             where i.HomeImage == true && p.CategoryId1 == categoryId
+                             select new CustomerProductDto
+                             {
+                                 Id = p.Id,
+                                 Barcode = p.Barcode,
+                                 AddedDate = p.AddedDate,
+                                 Brand = p.Brand,
+                                 CategoryId1 = p.CategoryId1,
+                                 CategoryId2 = p.CategoryId2,
+                                 CategoryId3 = p.CategoryId3,
+                                 Description = p.Description,
+                                 ProductCode = p.ProductCode,
+                                 ProductName = p.ProductName,
+                                 Status = p.Status,
+                                 Stock = p.Stock,
+                                 TaxRate = p.TaxRate,
+                                 UnitPrice = p.UnitPrice,
+                                 ImagePath = i.ImagePath
+                             };
+                return result.ToList();
+            }
+        }
+
         //public List<ProductDetailDto> getProductsDetailDtos()
         //{
         //    using (ETradeContext context = new ETradeContext())
@@ -31,5 +90,6 @@ namespace DataAccess.Concrete.EntityFramework
         //        return result.ToList();
         //    }
         //}
+
     }
 }

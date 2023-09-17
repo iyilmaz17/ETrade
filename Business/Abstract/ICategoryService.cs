@@ -11,11 +11,17 @@ namespace Business.Abstract
 {
     public interface ICategoryService
     {
-        IDataResult<List<Category>> GetAll();
-        IDataResult<Category> GetById(int categoryId);
-        IDataResult<List<Category>> GetByMainCategory();
-        IResult Add(Category category);
-       // IDataResult<List<MainCategoryDto>> GetMainCategory(string categoryName);
-    }
+        IDataResult<List<MainCategory>> GetAll();
+        IDataResult<MainCategory> GetById(int categoryId);
+        IResult Add(MainCategory category);
 
+
+        // Category2
+        IDataResult<List<SubcategoryOne>> GetAllSubcategoryOne();
+        IDataResult<List<SubcategoryOne>> GetByParentCategoryIdSubcategoryOne(int parentCategoryId);
+        // Category2
+        IDataResult<List<SubcategoryTwo>> GetAllSubcategoryTwo();
+        IDataResult<List<SubcategoryTwo>> GetByParentCategoryIdSubcategoryTwo(int parentCategoryId);
+
+    }
 }
